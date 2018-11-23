@@ -1,0 +1,86 @@
+body {
+	margin:0;
+}
+h2,p {
+	padding:0 10px;
+}
+.main {
+	height:1000px;
+	background:#f63;
+	background:-webkit-linear-gradient(top,#f8f8f8,#f63);
+	padding:10px;
+}
+.btn-popup {
+	padding:0 10px;
+	height:40px;
+	line-height:40px;
+	background:#f63;
+	font-weight:600;
+	border:none;
+	outline:none;
+	color:#333;
+	border-radius:4px;
+	cursor:pointer;
+	font-size:16px;
+	-webkit-tap-highlight-color:transparent;
+}
+code {
+	background:#ddd;
+	padding:2px 5px;
+	border-radius:2px;
+	color:#333;
+	white-space:pre-wrap;
+	display:inline-block;
+	margin:0 10px;
+}
+/****************** css for layer /*******************/
+
+.layer {
+	position:fixed;
+	overflow:auto;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:#666;
+	background:rgba(0,0,0,0.8);
+	z-index:100001;
+	display:none;
+	-webkit-will-change:background;
+	will-change:background;
+}
+.layer-content {
+	text-align:center;
+	color:#333;
+	font-size:0.9em;
+	padding:0 5px;
+	display:inline-block;
+	width:40%;
+	max-width:200px;
+	height:80px;
+	line-height:80px;
+	background:#fff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	border-radius:5px;
+}
+.layer-content>div {
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.lock {
+	overflow:hidden;
+	touch-action:none;
+}
+.lock body {
+	overflow:hidden;
+	touch-action:none;
+	margin-right:17px;
+}
+.lock.mobile body {
+	margin-right:0;
+}

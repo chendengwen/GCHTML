@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>两边自适应中间固定_flex02</title>
+    <meta charset="UTF-8">
+            <title></title>
+            <style type="text/css">
+    div[class=me] {
+        display: -webkit-box;
+    }
+
+    div div {
+        background: red;
+        height: 100px;
+    }
+
+    div div:nth-child(1) {
+        -webkit-box-flex: 1;
+    }
+
+    div div:nth-child(2) {
+        width: 400px;
+        background: #ccc;
+    }
+
+    div div:nth-child(3) {
+        -webkit-box-flex: 1;
+    }
+    </style>
+        </head>
+    
+
+<body>
+            <div class="me">
+                    <div>left</div>
+                    <div>center</div>
+                    <div>right</div>
+                </div>
+        </body>
+
+</html>

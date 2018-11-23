@@ -1,0 +1,43 @@
+*{ 
+    margin: 0; padding: 0;
+}
+html,body{
+    width: 100%; height: 100%;
+}
+body{ 
+    font: 14/1.5 normal 'Microsoft YaHei';  background-color: #fff;
+}
+
+/*默认样式*/
+.window_boundingBox{ 
+    background-color: #fff; width: 600px; height: 360px; border: 1px solid #4d99cb; border-radius: 10px;                      
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); position: fixed; overflow: hidden; z-index: 2;
+}
+.window_header{
+    color: #fff; width: 100%; background-color: #4d99cb; height: 36px; line-height: 36px; text-align: center;
+}
+.window_body{
+    padding: 10px;
+}
+.window_footer{
+    background-color: #dcdcdc; width: 100%; height: 36px; line-height: 36px; text-align: center;
+    position: absolute;  bottom: 0;
+}
+.closeBtn{
+    border-radius: 50%; cursor: pointer; width: 20px; height: 20px; padding: 2px; text-align: center;
+    line-height: 20px; background-color: #fff; color: #333; position: absolute; right: 6px; top: 6px; color: #4d99cb;
+}
+.window_mask{
+    background-color: #000; opacity: 0.3; width: 100%; height: 100%; position: fixed; left: 0; top:0; z-index: 1;
+}
+
+/*定制皮肤*/
+.window_skin_a.window_boundingBox{
+    border: 1px solid red;
+}
+.window_skin_a .window_header{
+    background-color:red;
+}
+.window_skin_a .closeBtn{
+    color: red;
+}

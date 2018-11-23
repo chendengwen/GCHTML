@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width:120px;
+            height:120px;
+            line-height:120px;
+            margin: 20px;
+            background-color: #5cb85c;
+            float: left;
+            font-size: 12px;
+            text-align: center;
+            color:orangered;
+        }
+        /*效果一：360°旋转 修改rotate(旋转度数)*/
+        .img1 {
+            transition: All 0.4s ease-in-out;
+            -webkit-transition: All 0.4s ease-in-out;
+            -moz-transition: All 0.4s ease-in-out;
+            -o-transition: All 0.4s ease-in-out;
+        }
+
+        .img1:hover {
+            transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+        }
+
+        /*效果二：放大 修改scale(放大的值)*/
+        .img2 {
+            transition: All 0.4s ease-in-out;
+            -webkit-transition: All 0.4s ease-in-out;
+            -moz-transition: All 0.4s ease-in-out;
+            -o-transition: All 0.4s ease-in-out;
+        }
+
+        .img2:hover {
+            transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+        }
+       /*效果三：旋转放大 修改rotate(旋转度数) scale(放大值)*/
+        .img3 {
+            transition: All 0.4s ease-in-out;
+            -webkit-transition: All 0.4s ease-in-out;
+            -moz-transition: All 0.4s ease-in-out;
+            -o-transition: All 0.4s ease-in-out;
+        }
+
+        .img3:hover {
+            transform: rotate(360deg) scale(1.2);
+            -webkit-transform: rotate(360deg) scale(1.2);
+            -moz-transform: rotate(360deg) scale(1.2);
+            -o-transform: rotate(360deg) scale(1.2);
+            -ms-transform: rotate(360deg) scale(1.2);
+        }
+        /*效果四：上下左右移动 修改translate(x轴,y轴)*/
+        .img4 {
+            transition: All 0.4s ease-in-out;
+            -webkit-transition: All 0.4s ease-in-out;
+            -moz-transition: All 0.4s ease-in-out;
+            -o-transition: All 0.4s ease-in-out;
+        }
+
+        .img4:hover {
+            transform: translate(0, -10px);
+            -webkit-transform: translate(0, -10px);
+            -moz-transform: translate(0, -10px);
+            -o-transform: translate(0, -10px);
+            -ms-transform: translate(0, -10px);
+        }
+
+        
+
+        /*使用了transform属性来实现图标的旋转，并且设置了transition动画，将变化的属性名称设置为transform。测试页面，现在我们将看到图标的旋转效果。
+        PS：在设置旋转属性时，需要加上deg作为度数单位，即使是旋转0度也需要同样添加这一单位。此外，transform只是一种变换属性，其本身不能生成动画效果，它只能通过与transition或animation属性的配合才能产生动画效果。发现问题：当前的图标只会旋转一次，然后将停止下来。
+        而如果我们希望图标能够一直不停旋转，则需要请出animation动画。使用animation动画的前提是先制作动画的各个关键帧。*/
+        .img5:hover {
+            -webkit-transform:rotate(360deg);
+            transform:rotate(360deg);
+            -webkit-transition:-webkit-transform 1s linear;
+            transition:transform 1s linear;
+        }
+
+        .img6 {
+            /*
+                infinite参数，表示动画将无限循环
+                alternate 参数. animation动画中加入反向播放参数alternate。在加入该参数后，动画将在偶数次数时反向播放动画。
+            */
+            animation:rotating 1.2s linear infinite;
+        }
+
+        @keyframes rotating{
+            from{transform:rotate(0)}
+            to{transform:rotate(360deg)}
+        }
+
+    </style>
+</head>
+<body>
+<div class="img1">效果一：360°旋转 </div>
+<div class="img2">效果二：放大</div>
+<div class="img3">效果三：旋转放大</div>
+<div class="img4">效果四：上下左右移动 </div>
+<div class="img5">效果五：转一次 </div>
+<div class="img6">效果六：一直转 </div>
+
+
+</body>
+</html>

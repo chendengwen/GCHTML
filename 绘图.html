@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>绘图</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <svg width="100" height="100">
+        <rect x="20" y="20" width="50" height="40" style="fill:blue;stroke:pink;stroke-width:7;opacity:0.7;"></rect>
+    </svg>
+    <code></code>
+    <svg width="100" height="100">
+        <rect x="20" y="20" rx="10" ry="10" width="50" height="40" style="fill:blue;stroke:pink;stroke-width:7;opacity:0.7;"></rect>
+    </svg>
+    <ul>
+        <li>x 属性定义矩形的左侧位置（例如，x="0" 定义矩形到浏览器窗口左侧的距离是 0px）
+        <li>y 属性定义矩形的顶端位置（例如，y="0" 定义矩形到浏览器窗口顶端的距离是 0px）
+        <li>rect 元素的 width 和 height 属性可定义矩形的高度和宽度
+        <li>style 属性用来定义 CSS 属性
+        <li>CSS 的 fill 属性定义矩形的填充颜色（rgb 值、颜色名或者十六进制值）
+        <li>CSS 的 stroke-width 属性定义矩形边框的宽度
+        <li>CSS 的 stroke 属性定义矩形边框的颜色
+        <li>rx 和 ry 属性可使矩形产生圆角。
+    </ul>
+    <svg width="100" height="100">
+        <circle cx="100" cy="50" r="40" style="fill:blue;stroke:pink;stroke-width:7;opacity:0.7;"></circle>
+    </svg>
+    <svg width="200" height="100">
+        <circle cx="100" cy="50" r="40" style="fill:blue;stroke:pink;stroke-width:7;opacity:0.7;"></circle>
+    </svg>
+    <ul>
+        <li>cx 和 cy 属性定义圆点的 x 和 y 坐标;如果省略 cx 和 cy，圆的中心会被设置为 (0, 0)
+    </ul>
+    <svg width="200" height="100">
+        <ellipse cx="100" cy="40" rx="50" ry="20" style="fill:blue;stroke:pink;stroke-width:7;opacity:0.7;"></ellipse>
+    </svg>
+    <svg width="500" height="100">
+        <ellipse cx="180" cy="65" rx="170" ry="20" style="fill:purple" />
+        <ellipse cx="160" cy="50" rx="150" ry="10" style="fill:lime" />
+        <ellipse cx="140" cy="30" rx="130" ry="15" style="fill:yellow" />
+    </svg>
+    <ul>
+        <li>cx 属性定义圆点的 x 坐标
+        <li>cy 属性定义圆点的 y 坐标
+        <li>rx 属性定义水平半径
+        <li>ry 属性定义垂直半径
+    </ul>
+    <svg width="200" height="100">
+        <line x1="0" y1="0" x2="100" y2="50" style="stroke:black;stroke-width:2;opacity:0.7;"></line>
+    </svg>
+    <svg width="200" height="100">
+        <rect x="0" y="0" width="100" height="50" style="fill:pink;stroke:black;stroke-width:1;"></rect>
+        <line x1="0" y1="0" x2="100" y2="50" style="stroke:black;stroke-width:1;"></line>
+    </svg>
+    <ul>
+        <li>x1 属性在 x 轴定义线条的开始
+        <li>y1 属性在 y 轴定义线条的开始
+        <li>x2 属性在 x 轴定义线条的结束
+        <li>y2 属性在 y 轴定义线条的结束
+    </ul>
+    <svg width="700" height="100">
+        <polygon points="0,0 0,100 120,100" style="fill:blue; stroke:pink;stroke-width:5" />
+        <polygon points="300,0 400,50 300,100" style="fill:blue; stroke:pink;stroke-width:5" />
+        <polygon points="150,0 200,0 250,50 200,100 150,100 100,50" style="fill:blue; stroke:pink;stroke-width:5" />
+    </svg>
+    <ul>
+        <li>points 属性定义多边形每个角的 x 和 y 坐标
+    </ul>
+    <svg width="200" height="100">
+        <polyline points="50,0 50,50 100,50 100,100 150,100 150,150  " style="fill:white; stroke:pink;stroke-width:2">
+            <polyline>
+    </svg>
+    <svg width="300" height="150">
+        <polyline points="175,0 150,50 100,50 125,100 100,150 175,125 250,150 225,100 250,50 200,50 175,0  " style="fill:blue; stroke:pink;stroke-width:2;">
+            <polyline>
+    </svg>
+</body>
+
+</html>

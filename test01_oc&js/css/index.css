@@ -1,0 +1,58 @@
+html,
+body,
+div {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#bg {
+    height: 100%;
+    background-color: rgb(250,250,250);
+    /*box-shadow: darkgrey 10px 10px 30px 5px ;//边框阴影*/
+    position:relative;
+}
+
+#img {
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+	text-align: center;
+	/*background-color: red;*/
+}
+
+img {
+	width: 30px;
+	height: 30px;
+}
+
+#topBtn {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	height: 30px;
+	margin-top: 10px;
+	/*background-color: green;*/
+}
+
+button {
+	display: inline-block;
+	margin: 0;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 30px;
+	border: none;  /*自定义边框*/
+	background-color:rgb(247,193,85);
+	border-radius: 4px;
+	font-size: 14px;
+	font-family: SimHei,"微软雅黑",sans-serif;
+	outline: none;  /*消除默认点击蓝色边框效果*/
+}
+
+footer {
+	height: 50px;
+  	margin-top: -150px;
+  	/*background-color: red;*/
+  	text-align: center;
+}

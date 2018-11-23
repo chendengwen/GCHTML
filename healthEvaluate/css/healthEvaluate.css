@@ -1,0 +1,137 @@
+/*文字颜色
+最浅 rgb(170, 170, 170)
+稍浅 rgb(153, 153, 153)
+正常 rgb(102, 102, 102)
+最黑 rgb(51, 51, 51)
+蓝色 rgb(0, 141, 253)
+红色 rgb(255, 0, 0)*/
+
+body,
+div,
+section {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+span {
+	font-family: SimHei,"微软雅黑",sans-serif;
+}
+a,
+button,
+input {
+	-webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+
+body { -webkit-user-select:none;}
+#content { display: none; }
+
+#score_synthesize {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+#head_span_01 {
+	color: #333; 
+	font-size:14px;
+	padding-left: 15px;
+	padding-right: 10px;
+}
+#head_span_02 {
+	color: red; font-size: 14px;
+}
+#head_span_03 {
+	color: red; font-size: 17px;
+}
+
+#score_details {
+	width: 100%;
+	height: 280px;
+	 margin-bottom: -10px;
+}
+
+svg {
+/*	background-color: rgba(170,170,170,0.6);
+*/	width:300px;
+	height:200px;
+	/*根据尺寸计算坐标*/
+	margin: calc((280px - 200px)/2) calc(50% - 200px);
+}
+
+.report_radius {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	text-align: center;
+	position: absolute;
+	color: #fff!important;
+	display: inline-block;
+}
+
+/*顶部--生理分数*/
+#report_radius_1 {
+	background-color: rgba(37,191,255,1);
+	top: 50px;
+	right: calc(50% - 50px);
+	right:-webkit-calc(50% - 50px);
+}
+
+#report_radius_2 {
+	background-color: rgb(255, 164, 57);
+	top: 170px;
+	left: calc(50% - 140px);
+	left:-webkit-calc(50% - 140px);
+}
+
+#report_radius_3 {
+	background-color: rgb(0, 200, 132);
+	top: 170px;
+	right: calc(50% - 140px);
+	right:-webkit-calc(50% - 140px);
+}
+
+.report_radius_span {
+	height: 50px;
+	line-height: 70px;
+}
+
+#score_comment {
+	padding-bottom: 15px;
+	padding-left: 10px;
+}
+#middle_span_comment {
+	color: rgb(153, 153, 153); 
+	font-size: 13px;
+	font-family: HiraginosansGB-W3;
+}
+
+div#suggetion ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	/*height: 40px;*/
+}
+
+div#suggetion ul li {
+	float: left;  /* 向左漂移，将竖排变为横排 */
+	width: 25%;
+	height: 30px;
+	border-bottom: 0.5px rgb(200, 200, 200) solid;
+}
+
+div#suggetion ul li a, div#suggetion ul li a {
+	text-align: center;
+	color: rgb(102, 102, 102);
+	font-size: 15px;
+	font-family: HiraginosansGB-W3;
+	display: block;
+	line-height: 30px;
+	text-decoration: none;
+}
+
+div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
+	color: rgb(0, 141, 253);
+	border-bottom: 2px rgb(0, 141, 253) solid;
+}
+
+ 
+

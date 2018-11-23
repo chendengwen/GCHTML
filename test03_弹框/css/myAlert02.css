@@ -1,0 +1,67 @@
+*{margin:0px;padding:0px;}
+body{height:1000px;}
+/*#AppConfirm{position:relative;margin:0 auto;}*/
+
+#modlue{
+    position:fixed;
+    left:50%;
+    top:50%;width:400px;
+    height:260px;  
+    margin-left:-200px;
+    margin-top:-150px;
+    background-color:#fff;
+    z-index:100;
+    border:1px solid grey;
+    visibility:hidden;
+    /*overflow: hidden;*/
+}
+
+.MyHeader{
+    width:100%;
+    height:18%;
+    background-color:white;
+    margin:0px;
+    color:black;
+}
+
+.top_content{
+    font-size:24px;
+    text-align:center;
+}
+
+#cancle{
+    float:right
+}
+    
+.MyContent{
+    width:100%;
+    height:64%;
+    background-color:white;
+}
+    
+.MyBtn{
+    width:100%;
+    height:18%;
+    background-color:white;
+}
+    
+#cancleBtn,#confirm{
+    float:right;
+    font-size:20px;
+    color:black;
+    font-weight:bold;
+    margin-right:6%;
+    background-color:white;
+}
+    
+#box{
+    margin:20px 0 0 20px;
+    background-color:white;
+    font-size:18px;
+    color:black;
+    overflow: hidden;
+}
+    
+#infoMesg p{
+    margin:4px 15px;
+}

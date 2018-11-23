@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>自定义提示窗口</title>
+	<script type="text/javascript" src="scripts/myAlert01.js"></script>
+  <script type="text/javascript">
+
+    function bodyOnload() {
+      var myInput = document.getElementById("myInput");
+      myInput.style.border = "none";
+      myInput.style.backgroundColor = "rgba(223, 230, 223, 0.3)";
+      myInput.value = "请输入你的名字：";
+      myInput.onfocus = function () {
+        myInput.style.outline = "none";
+        myInput.value = "";
+      };
+      var image_div = document.createElement("div");
+      image_div.style.width = "200px";
+      image_div.style.height = "300px";
+      image_div.style.float = "left";
+      image_div.style.cursor = "pointer";
+      image_div.style.backgroundColor = "green";
+      	
+      image_div.onclick = function () {
+       new MyAlert().alert("系统提示","click the image_div",5000);
+      };
+      var outer_div = document.createElement("div");
+      outer_div.style.border = "3px solid red";
+      outer_div.style.width = parseInt(myInput.offsetWidth) + parseInt(image_div.style.width);
+      outer_div.style.height = myInput.offsetHeight;
+      // outer_div.style.width = "500px";
+      // outer_div.style.height = "400px";
+      document.body.appendChild(outer_div);
+      outer_div.appendChild(myInput);
+      document.body.appendChild(image_div);
+    }
+
+    // window.onload = bodyOnload()
+    </script>
+</head>
+<body onload="bodyOnload()">
+   <input id="myInput" type="text" name="name" title="名字"/>
+</body>
+</html>

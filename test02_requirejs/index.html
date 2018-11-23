@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--viewport是网页默认的宽度和高度，这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%-->
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+	<title>test02 requirejs</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/window_alertBox.css">
+	<!--This sets the baseUrl to the "scripts" directory, and
+    loads a script that will have a module ID of 'main'-->
+	<script data-main="scripts/main.js" src="scripts/lib/require.js"></script>	
+	<script>
+		function alertPage () {
+			window.open ('page.html', 'newwindow', 'height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no') 
+		}
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div id="img">
+			<img src="img/icon01.png" alt="logo">
+		</div>
+		<div id="topBtn">
+			<button id="btn" onclick="alertPage()">弹框</button>
+		</div>
+	</div>
+	<footer class="footer">
+		<button id="bottomBtn" type="button" onclick="bottomButtonClicked()">弹出弹框</button>
+	</footer>
+</body>
+</html>

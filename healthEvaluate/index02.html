@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>饮食建议</title>
+	<link rel="stylesheet" href="css/healthEvaluate.css">
+    <script src="scripts/lib/vue.js" type="text/javascript"></script>
+    <script src="scripts/lib/vuex.js" type="text/javascript"></script>
+    <script src="scripts/lib/vue-router.js" type="text/javascript"></script>
+    <script src="components/EattingSuggestCPT.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="commom_food_example">常见食物举例</div>
+    <div class="categary_list">
+        <div class="categary_cell" v-for="cellItem in dataList" v-bind:key="cellItem">
+            <div class="food_categary_subtitle">谷物类{{cellItem.title}}</div>
+            <div class="food_categary_content">
+                <div class="food_categary_item" v-for="item in cellItem.content">
+                    <img/>
+                    <span >{{item.title}}</span><span>{{item.weight}}</span><span>两</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+	const appVM = new Vue({
+	el:'.categary_list',
+	data:{
+		dataList:[
+			{title:"谷薯类",content:[{title:"大米",weight:"6"},{title:"馒头",weight:"8.4"},{title:"红薯",weight:"24"}]},
+			{title:"蔬菜类",content:[{title:"番茄",weight:"6"},{title:"南瓜",weight:"8.4"},{title:"红薯",weight:"24"}]},
+			{title:"肉蛋类",content:[{title:"猪肉",weight:"6"},{title:"鸡蛋",weight:"8.4"},{title:"红薯",weight:"24"}]},
+			{title:"豆奶类",content:[{title:"大米",weight:"6"},{title:"馒头",weight:"8.4"},{title:"红薯",weight:"24"}]},
+			{title:"水果类",content:[{title:"大米",weight:"6"},{title:"馒头",weight:"8.4"},{title:"红薯",weight:"24"}]},
+			{title:"油脂类",content:[{title:"大米",weight:"6"},{title:"馒头",weight:"8.4"},{title:"红薯",weight:"24"}]},
+		],
+	},
+});
+</script>
+
+</html>

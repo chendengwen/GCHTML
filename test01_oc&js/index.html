@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+	<title>健康评估</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script type="text/javascript" src="scripts/lib/require.js"></script>
+	<script type="text/javascript">
+		// 引入js文件 或者define定义的模块 , js后缀可以省略
+        require(["scripts/app/tips_01"]);
+        require(["scripts/app/commonFunc"]);
+    </script>
+</head>
+<body>
+	<div class="content">
+		<div id="img">
+			<img src="img/icon01.png" alt="logo">
+		</div>
+		<div id="topBtn">
+			<button type="button">点击调用OC方法</button>
+		</div>
+	</div>
+	<footer class="footer">
+		<button id="bottomBtn" type="button" onclick="bottomButtonClicked()">弹出弹框</button>
+	</footer>
+</body>
+</html>
