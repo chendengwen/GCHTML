@@ -4,6 +4,7 @@ functional interface for iOS UI
 Master brench
 Gary created on 2.1.2017
 
+/*
 #陈登文—简历   
 > 求职意向：高级前端开发工程师   
 >联系方式：135414    
@@ -14,3 +15,4 @@ Gary created on 2.1.2017
 * 职位：资深前端开发工程师  
 * 时间：2014.9-2015.12   
 * 其他：2014.9-2015.12
+*/
