@@ -52,6 +52,11 @@ const store = new Vuex.Store({
   state: {
     count: 0,
     food_categary_list:[],	// 饮食建议数据
+
+
+    sportSuggestion:'',
+    mentalSuggestion:'',
+    societySuggestion:'',
   },
   mutations: {
     increment (state) {
@@ -65,7 +70,6 @@ const appVM = new Vue({
 	store,
 	router:router,
 	data:{
-		gotData:false,
 		linkerList:[
 			{title:"饮食建议",path:'/'},
 			{title:"运动建议",path:'/sport'},

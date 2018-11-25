@@ -1,28 +1,52 @@
 /*
    运动组件
 */
-let sportChild_noData = Vue.component('sport-suggest-child-nodata',{
-	template:'<strong style="margin:20px;color:rgb(51,51,51);line-height:24px;">' +
-	'&nbsp;&nbsp;运动组件无数据<strong style="color:red;">身高、体重、体力活动</strong>信息</strong>'
+let sportChild_noData = Vue.component('sport-suggest-child-nodata',
+{
+	props:['suggestion'],
+	template:'<div>'+
+				'<div class="suggetion_content_text" style="padding-top:40px;">' +
+					'&nbsp;&nbsp;为了科学的为您制定运动计划,您需要完善您的健康档案信息。请完善您的:'+
+				'</div>'+
+				'<div v-for="(item, index) in suggestion" class="suggetion_content_text">'+
+					'&nbsp;&nbsp;&nbsp;&nbsp;{{"（" +index+"）"  + item}}</div>'+
+				'<img src="img/noRecord.png" style="margin-left:50%;">'+
+				'<div class="suggetion_content_text" style="text-align:center;">没有数据哦</div>'+
+			'</div>',
 });
 
-let sportChild_withData = Vue.component('sport-suggest-child-data',{
-	template:'<strong style="margin:20px;color:rgb(51,51,51);line-height:24px;">' +
-	'&nbsp;&nbsp;运动组件很好<strong style="color:red;">{{$route.params.param2}}身高、体重、体力活动</strong>信息</strong>'
+let sportChild_withData = Vue.component('sport-suggest-child-data',
+{
+	props:['suggestion'],
+	template:'<div><strong style="margin:20px;color:rgb(51,51,51);line-height:24px;">' +
+	'&nbsp;&nbsp;运动组件很好<strong style="color:red;">{{$route.params.param2}}身高、体重、体力活动</strong>信息</strong></div>'
 });
 
 let sportCPT = Vue.component('sport-suggest',{
 	props:[
 		'data2',
 	],
-	components:{ sportChild_noData,sportChild_withData },
-	template:'<div>运动建议组件'+
-				'<br>' +
-				'<span>{{$route.params.param2}}</span>'+
-				'<router-view></router-view>'+
+	components:{ 
+		'nodata':sportChild_noData,
+		'withdata':sportChild_withData 
+	},
+	template:'<div>'+
+				'<div v-if="sportSuggestion instanceof Array">'+
+					'<nodata :suggestion="sportSuggestion"></nodata>' +
+			 	'</div>' +
+			 	'<div v-else-if="typeof sportSuggestion == \'string\' ">'+
+					'<withdata :suggestion="sportSuggestion"></withdata>'+
+			 	'</div>'+
 			'</div>',
+
 	// 复用组件时，想对路由 "参数的变化" 作出响应的话，你可以简单地 watch (监测变化) $route 对象：
 	// 或者使用 2.2 中引入的 beforeRouteUpdate 导航守卫
+	computed: {
+		sportSuggestion(){
+			return this.$store.state.sportSuggestion;
+		},
+		
+	},
 	watch:{
 		'$route' (to,from){
 			// 对路由变化作出响应...

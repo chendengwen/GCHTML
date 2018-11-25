@@ -134,4 +134,12 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 }
 
  
+.suggetion_content_text {
+	line-height: 22px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: rgb(51,51,51);
+	text-align: left;
+	font-size: 14px;
+}
 

@@ -21,14 +21,17 @@ fetch(apiStr).then(response => {
         document.getElementById('content').style.display = "block";
 
         // 修改 vue 数据
-        window.AppVM.$store.state.food_categary_list = [
+        let state = window.AppVM.$store.state;
+        state.food_categary_list = [
             { title: "蔬菜类22", content: [{ title: "番茄", weight: "6" }, { title: "南瓜", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "肉蛋类22", content: [{ title: "猪肉", weight: "6" }, { title: "鸡蛋", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "豆奶类22", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "水果类", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "油脂类", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "谷薯类", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
-        ]
+        ];
+        state.sportSuggestion = ["体重","您经常进行的运动项目"];
+
 
 
         var message = 'got a messsage';
