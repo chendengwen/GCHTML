@@ -21,32 +21,34 @@ let common_food_categary = Vue.component('common-food-categary',{
 	],
 	template:
 	'<div>'+
-		'<div class="commom_food_example">常见食物举例</div>'+
     	'<div class="categary_list">'+
         	'<div class="categary_cell" v-for="(cellItem,index) in dataList" v-bind:key="index">'+
             	'<div class="food_categary_subtitle">{{cellItem.title}}</div>'+
             	'<div class="food_categary_content">'+
                		'<div class="food_categary_item" v-for="item in cellItem.content">'+
-                    	'<img style="width:150px; height:150px;"></img>'+
+                    	'<img style="width:30px; height:30px;"></img><br/>'+
                     	'<span >{{item.title}}</span><span>{{item.weight}}</span><span>两</span>'+
                	 	'</div>'+
             	'</div>'+
         	'</div>'+
     	'</div>'+
+    	'<div class="red_tips">*每日食盐摄入量<6g，水1500-1700毫升 &#10;*饮食方案仅适用于正常成年人</div>'+
+    	// '<div class="red_tips">*饮食方案仅适用于正常成年人</div>'+
     '</div>'
 });
+
+
 
 let eattingChild_withData = Vue.component('eatting-suggest-child-data',{
 	props:[
 		'dataList',
 	],
 	components:{ 
-		'categaryCell':common_food_categary,
+		'categaryList':common_food_categary,
 	},
 	template:'<div>'+
-				'<strong style="margin:20px;color:rgb(51,51,51);line-height:24px;">' +
-				'&nbsp;&nbsp;数据很完美,很好<strong style="color:red;">身高、体重、体力活动</strong>信息</strong>'+
-				'<categary-cell :dataList="dataList"></categary-cell>'+
+				'<div></div>'+
+				'<categary-list :dataList="dataList"></categary-list>'+
 			'</div>'
 });
 

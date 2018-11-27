@@ -29,6 +29,7 @@ fetch(apiStr).then(response => {
             { title: "水果类", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "油脂类", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "谷薯类", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },
+            { title: "油脂类", content: [{ title: "各类植物油和动物油汤匙(10g汤匙)", weight: "6" }] },
         ];
         state.sportSuggestion = ["体重","您经常进行的运动项目"];
         state.mentalSuggestion = "这说明你可能身体已经得病，需要到医院进一步检查和治疗，要特别注意检查血压的变化。"+
