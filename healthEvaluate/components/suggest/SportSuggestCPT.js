@@ -1,6 +1,6 @@
 /*
    运动组件
-*/
+*/ 
 let sportChild_noData = Vue.component('sport-suggest-child-nodata',
 {
 	props:['suggestion'],
@@ -10,8 +10,8 @@ let sportChild_noData = Vue.component('sport-suggest-child-nodata',
 				'</div>'+
 				'<div v-for="(item, index) in suggestion" class="suggetion_content_text">'+
 					'&nbsp;&nbsp;&nbsp;&nbsp;{{"（" +index+"）"  + item}}</div>'+
-				'<img src="img/noRecord.png" style="margin-left:50%;">'+
-				'<div class="suggetion_content_text" style="text-align:center;">没有数据哦</div>'+
+				'<div class="noRecord_background"><div/></div>'+
+				'<div class="suggetion_content_text nodata_text" style="text-align:center;">没有数据哦</div>'+
 			'</div>',
 });
 
@@ -24,7 +24,7 @@ let sportChild_withData = Vue.component('sport-suggest-child-data',
 
 let sportCPT = Vue.component('sport-suggest',{
 	props:[
-		'data2',
+		'data',
 	],
 	components:{ 
 		'nodata':sportChild_noData,

@@ -6,24 +6,46 @@
 蓝色 rgb(0, 141, 253)
 红色 rgb(255, 0, 0)*/
 
-body,
-div,
-section {
+body,div,section {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 }
+
 span {
 	font-family: SimHei,"微软雅黑",sans-serif;
 }
-a,
-button,
-input {
+
+a,button,input {
 	-webkit-tap-highlight-color:rgba(255,0,0,0);
 }
 
 body { -webkit-user-select:none;}
-#content { display: none; }
+
+#content { display: none;}
+
+.foot_links {
+	position:relative;
+	bottom: 10px;
+	top: 10px;
+	left:0;
+	height: 30px;
+	width: 100%;
+	/*background: red;*/
+}
+
+.foot_links button {
+	color: rgb(0, 141, 253);
+	font-size: 14px;
+	/*text-align: center;*/
+	width: 100px;
+	border:none;
+	outline: none;
+	background: none;
+	position: absolute;
+}
+
+
 
 #score_synthesize {
 	padding-top: 10px;
@@ -143,3 +165,22 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 	font-size: 14px;
 }
 
+.noRecord_background {
+	text-align:center;
+	margin-top:40px;
+}
+.noRecord_background>div {
+	display: inline-block;
+	width:150px; 
+	height:100px;
+	/*padding:0; */
+	border-style:none;
+	background: url(../img/noRecord.png) no-repeat;
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
+	-webkit-background-size:100% 100%;
+}
+
+.nodata_text{
+	height: 100%;
+}
