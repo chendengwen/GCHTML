@@ -38,17 +38,54 @@ let common_food_categary = Vue.component('common-food-categary',{
 });
 
 
+let categary_chart_item = Vue.component('categary-chart-item',{
+	props:[
+		'itemData',
+	],template:'<div class="chart_item">'+
+					'<img style="width:30px; height:30px;"></img>'+
+					'<div class="chart_item_title"></div>'+
+					'<div class="chart_center"></div>'+
+			   '</div>',
+});
+
+/*
+    饮食推荐图表组件
+*/
+let recommend_food_chart = Vue.component('recommend-food-chart',{
+	props:[
+		'chartData',
+	],
+	data:function () {
+		return {
+			 list:['11','22','33','44','55','66'],
+		}
+	},
+	components:{
+		'chartItem':categary_chart_item,
+	},
+	template:'<div>'+
+				'<div class="food_recommend_text">您目前的体重指数<strong>{{11}}</strong>kg/m²，属于<strong>{{222}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{333}}</strong> kcal</div>'+
+				'<div class="chart_background">'+
+					'<chart-item v-for="(item,index) in list" :class="{right_chart_item:index>2}">{{item}}</chart-item>'+
+					// '<div class="chart_left" ></div>'+
+					// '<div class="chart_center"></div>'+
+					// '<div class="chart_right"></div>'+
+				'</div>'+
+			 '</div>',
+});
+
 
 let eattingChild_withData = Vue.component('eatting-suggest-child-data',{
 	props:[
-		'dataList',
+		'data',
 	],
 	components:{ 
 		'categaryList':common_food_categary,
+		'foodChart':recommend_food_chart,
 	},
 	template:'<div>'+
-				'<div></div>'+
-				'<categary-list :dataList="dataList"></categary-list>'+
+				'<food-chart :chartData="data"></food-chart>'+
+				'<categary-list :dataList="data"></categary-list>'+
 			'</div>'
 });
 
@@ -61,7 +98,7 @@ let eattingCPT = Vue.component('eatting-suggest',{
 	},
 	template:'<div>'+
 				'<div v-if="cpt_data_list instanceof Array">'+
-					'<withdata :dataList="cpt_data_list"></withdata>'+
+					'<withdata :data="cpt_data_list"></withdata>'+
 				'</div>'+
 				'<div v-else>'+
 					'<nodata></nodata>'+
@@ -70,7 +107,7 @@ let eattingCPT = Vue.component('eatting-suggest',{
 			'</div>'
 	,computed: {
 		cpt_data_list(){
-			return this.$store.state.food_categary_list;
+			return this.$store.state.food_categary_data;
 		}
 	},
 	// watch: {

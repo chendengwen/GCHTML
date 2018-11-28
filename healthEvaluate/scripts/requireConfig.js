@@ -22,7 +22,7 @@ fetch(apiStr).then(response => {
 
         // 修改 vue 数据
         let state = window.AppVM.$store.state;
-        state.food_categary_list = [
+        state.food_categary_data = [
             { title: "蔬菜类22", content: [{ title: "番茄", weight: "6" }, { title: "南瓜", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "肉蛋类22", content: [{ title: "猪肉", weight: "6" }, { title: "鸡蛋", weight: "8.4" }, { title: "红薯", weight: "24" }] },
             { title: "豆奶类22", content: [{ title: "大米", weight: "6" }, { title: "馒头", weight: "8.4" }, { title: "红薯", weight: "24" }] },

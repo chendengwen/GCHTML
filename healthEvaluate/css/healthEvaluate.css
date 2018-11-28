@@ -191,6 +191,40 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 /*饮食建议组件样式*/
 /*//////////////*/
 
+.food_recommend_text {
+	font-size: 14px;
+	color: rgb(51,51,51);
+	line-height: 20px;
+	padding-left: 10px;
+	padding-top: 40px;
+	white-space:pre-wrap;
+}
+
+.food_recommend_text strong {
+	color:rgb(0, 141, 253);
+}
+
+.chart_background {
+	display: -webkit-flex; /* Safari */
+  	display: flex;
+  	flex-direction:column;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  	height: 270px;
+  	background: red;
+	
+}
+
+.chart_item {
+	background: green;
+	width: 150px;
+	height: 80px;
+}
+
+.right_chart_item {
+	margin-left: calc(100% - 300px);
+}
+
 .categary_list::before {
 	content:"常见食物举例";
 	height: 36px;
