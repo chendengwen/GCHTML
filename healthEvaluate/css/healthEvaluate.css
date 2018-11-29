@@ -73,7 +73,7 @@ body { -webkit-user-select:none;}
 	 margin-bottom: -10px;
 }
 
-svg {
+#score_details svg {
 /*	background-color: rgba(170,170,170,0.6);
 */	width:300px;
 	height:200px;
@@ -260,14 +260,19 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 }
 
 .chart_circle {
-	width: 200px;
-	height: 200px;
-	background: yellow;
+	width: 300px;
+	height: 150px;
+	/*background: yellow;*/
 	
 	flex: 1;
 	text-align: center;
-	margin-left: calc(-100px - 50%);
+	margin-left: calc(-150px - 50%);
 	margin-top: 10px;
+}
+
+svg text {
+	font-size: 18px;
+	text-anchor:middle;
 }
 
 .categary_list::before {
@@ -291,7 +296,7 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 
 .categary_cell .food_categary_content {
 	/*height: 60px;*/
-	width: 100%;
+	/*width: 100%;*/
 	/*background: red;*/
 }
 

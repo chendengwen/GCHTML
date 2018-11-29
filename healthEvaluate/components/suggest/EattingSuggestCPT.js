@@ -67,10 +67,24 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 				'<div class="food_recommend_text">您目前的体重指数<strong>{{11}}</strong>kg/m²，属于<strong>{{222}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{333}}</strong> kcal</div>'+
 				'<div class="chart_background">'+
 					'<chart-item v-for="(item,index) in list" :class="{right_chart_item:index>2}">{{item}}</chart-item>'+
-					'<div class="chart_circle">2800</div>'+
-					// '<div class="chart_center"></div>'+
-					// '<div class="chart_right"></div>'+
+					'<div class="chart_circle">'+
+						'<svg height="100%" width="100%">'+
+							'<circle cx="150" cy="70" r="55" fill="rgb(242,242,242)"/>'+
+							'<text x="150" y="70" fill="red" textLength="80">健康评估'+
+								'<tspan x="150" y="90">12cal</tspan>'+
+							'</text>'+
+	    					'<symbol>'+
+	    						'<circle id="circle_path" cx="150" cy="70" r="55" stroke-width="20" stroke-dasharray="62.8 251.2" fill="none"/>'+
+							'</symbol>'+
+							'<use xlink:href="#circle_path" id="circle_path1" stroke="#ffb850" stroke-dashoffset="0"/>'+
+							'<use xlink:href="#circle_path" id="circle_path2" stroke="#ff7e5d" stroke-dashoffset="62.8"/>'+
+							'<use xlink:href="#circle_path" id="circle_path3" stroke="#8cd2a4" stroke-dashoffset="125.6"/>'+
+							'<use xlink:href="#circle_path" id="circle_path4" stroke="#ff00fd" stroke-dashoffset="188.4"/>'+
+							'<use xlink:href="#circle_path" id="circle_path5" stroke="#62adea" stroke-dashoffset="251.2"/>'+
+						'</svg>'+
+					'</div>'+
 				'</div>'+
+	
 				'<div class="chart_background_after" ></div>'+
 			 '</div>',
 });
