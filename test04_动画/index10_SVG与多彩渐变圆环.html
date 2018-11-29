@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>10 SVG实现多彩圆环</title>
+	<style>
+		svg {
+		    transform: rotate(-0.05deg);
+		}
+
+		circle {
+		    transition: stroke-dasharray .2s;
+		}
+
+		.time-count-x {
+		    line-height: 1.5;
+		    position: relative;
+		}
+
+		.time-second {
+		    position: absolute;
+		    top: 50%;
+		    left: 0;
+		    right: 0;
+		    margin-top: -.75em;
+		    text-align: center;
+		    font-size: 100px;
+		}
+	</style>
+
+</head>
+<body>
+	
+	<div id="timeCountX" class="time-count-x">
+    <svg width="440" height="440" viewBox="0 0 440 440" class="center">
+        <defs>
+        	<!-- 
+        		LinearGradient(float x0, float y0, float x1, float y1, int[] colors, float[] positions,Shader.TileMode tile)  
+				参数: 
+				float x0: 渐变相对父容器的起始点x坐标 
+				float y0:渐变相对父容器的起始点y坐标 
+				float x1:渐变相对父容器的结束点x坐标 
+				float y1:渐变相对父容器的结束点y坐标 
+				int[] colors:颜色的int 数组 
+				float[] positions: 表示colors数组中几个颜色的相对位置，是一个float类型的数组，该数组的长度必须与colors数组的长度相同。如果这个参数使用null也可以，这时系统会按照梯度线来均匀分配colors数组中的颜色 
+
+
+				当y1和y2相等，而x1和x2不同时，可创建水平渐变
+				当x1和x2相等，而y1和y2不同时，可创建垂直渐变
+				当x1和x2不同，且y1和y2不同时，可创建角形渐变
+        	-->
+            <linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient1">
+                <stop offset="0%" stop-color="#e52c5c"></stop>
+                <stop offset="100%" stop-color="#ab5aea"></stop>
+            </linearGradient>
+           <linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient2">
+                <stop offset="0%" stop-color="#4352f3"></stop>
+                <stop offset="100%" stop-color="#ab5aea"></stop>
+            </linearGradient>
+        </defs>
+        <g transform="matrix(0,-1,1,0,0,440)">
+        	<!-- 浅色背景圈 -->
+            <circle cx="220" cy="220" r="170" stroke-width="50" stroke="#f0f1f5" fill="none" stroke-dasharray="1069 1069"></circle>
+            
+            <circle cx="220" cy="220" r="170" stroke-width="50" stroke="url('#gradient1')" fill="none" stroke-dasharray="1069 1069"></circle>
+            <circle cx="220" cy="220" r="170" stroke-width="50" stroke="url('#gradient2')" fill="none" stroke-dasharray="534.5 1069"></circle>
+        </g>
+    </svg>
+    <span id="timeSecond" class="time-second"></span>
+</div>
+</body>
+<script>
+
+var eleCircles=document.querySelectorAll("#timeCountX circle");
+var eleTimeSec=document.getElementById("timeSecond");
+var perimeter=Math.PI*2*170;//周长
+
+var circleInit=function(){
+	if(eleCircles[1]){
+		eleCircles[1].setAttribute("stroke-dasharray","1069 1069")
+	}
+
+	if(eleCircles[2]){
+		eleCircles[2].setAttribute("stroke-dasharray",perimeter/2+" 1069")
+	}
+
+	eleTimeSec.innerHTML=""
+};
+
+var timerTimeCount=null;
+var fnTimeCount=function(b){
+	if(timerTimeCount){return}
+
+	var b=b||10;
+	var a=function(){
+		var c=b/10;
+		if(eleCircles[1]){
+			eleCircles[1].setAttribute("stroke-dasharray",perimeter*c+" 1069")
+		}
+		if(eleCircles[2]&&b<=5){
+			eleCircles[2].setAttribute("stroke-dasharray",perimeter*c+" 1069")
+		}
+		if(eleTimeSec){
+			eleTimeSec.innerHTML=b
+		}
+		b--;
+
+		if(b<0){
+			clearInterval(timerTimeCount);
+			timerTimeCount=null;
+			alert("时间到！");
+			circleInit()
+		}
+	};
+
+	a();
+	timerTimeCount=setInterval(a,1000)
+};
+	
+fnTimeCount();
+</script>
+</html>

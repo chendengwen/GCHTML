@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>环形色块</title>
+	
+	<style type="text/css">
+		html,body,div{
+			width: 100%;
+			height: 100%;
+			overflow: scroll;
+		}
+
+		#circle_path1 {
+			stroke:#ffb850;
+			stroke-dashoffset:0;
+		} 
+		#circle_path2 {
+			stroke:#ff7e5d;
+			stroke-dashoffset:62.8; /*calc(62.8*1);*/
+		}
+		#circle_path3 {
+			stroke:#8cd2a4;
+			stroke-dashoffset:125.6; /*calc(62.8*2);*/
+		}
+		#circle_path4 {
+			stroke:#62adea;
+			stroke-dashoffset:188.4;/* calc(62.8*3);*/
+		}
+		#circle_path5 {
+			stroke:#62adea;
+			stroke-dashoffset:251.2; /*calc(62.8*4);*/
+		}
+
+
+		@keyframes animate1 {
+			0%{stroke-dashoffset:0}
+			100%{stroke-dashoffset:1000}/*1356是路径的长度*/
+			}
+		@keyframes animate2 {
+			0%{stroke-dashoffset:250}/*定义了四个颜色，所以339是1/4周长*/
+			100%{stroke-dashoffset:1250}/*需要dashoffset变化值是一个周长来实现首尾相接*/
+		}
+		@keyframes animate3 {
+			0%{stroke-dashoffset:500}
+			100%{stroke-dashoffset:1500}
+		}
+		@keyframes animate4 {
+			0%{stroke-dashoffset:750}
+			100%{stroke-dashoffset:1750}
+		}
+		#animate1 {
+		animation:animate1 2s linear infinite;
+		stroke:#ffb850;
+		}
+		#animate2 {
+		animation:animate2 2s linear infinite;
+		stroke:#ff7e5d;
+		}
+		#animate3 {
+		animation:animate3 2s linear infinite;
+		stroke:#8cd2a4;
+		}
+		#animate4 {
+		animation:animate4 2s linear infinite;
+		stroke:#62adea;
+		}
+
+		#circle {
+			stroke:#ff7e5d;
+		}
+	</style>
+
+</head>
+
+<body>
+	
+<div>
+    <svg width="440" height="440" viewBox="0 0 440 440" class="center">
+        <defs>
+            <linearGradient x1="50%" y1="50%" x2="0" y2="0" id="gradient1">
+                <stop offset="0%" stop-color="#00f"></stop>
+                <stop offset="50%" stop-color="#f0f"></stop>
+                <stop offset="100%" stop-color="#f00"></stop>
+            </linearGradient>
+        </defs>
+        <rect></rect>
+        <g transform="matrix(0,-1,1,0,0,440)">
+            <circle cx="220" cy="220" r="170" stroke-width="100" stroke="url('#gradient1')" fill="none" stroke-dasharray="169 10 400 10 120 10 200 10 130"></circle>
+
+        </g>
+    </svg>
+</div>
+
+    
+<div>
+	<svg height="100%" width="100%">
+		<circle cx="200" cy="70" r="50" fill="green"/>
+		
+		<!--用symbol来定义需要重复引用的相同路径-->
+	    <symbol> 
+	    	<circle id="circle_path" cx="200" cy="70" r="50" stroke-width="20" stroke-dasharray="62.8 251.2" fill="none"/>
+		</symbol>
+		<use xlink:href="#circle_path" id="circle_path1"/>
+		<use xlink:href="#circle_path" id="circle_path2"/>  
+		<use xlink:href="#circle_path" id="circle_path3"/>
+		<use xlink:href="#circle_path" id="circle_path4"/>
+		<use xlink:href="#circle_path" id="circle_path5"/>
+	</svg>
+</div>
+
+
+<div>
+    <svg height="100%" width="100%">
+        <symbol>
+            <path id="pentagon" d="M200,400 L400,400 L460,210 L300,150 L140,210 Z" stroke-width="10" stroke-dasharray="250 750" fill="none" />
+        </symbol>
+        <use xlink:href="#pentagon" id="animate1" />
+        <use xlink:href="#pentagon" id="animate2" />
+        <use xlink:href="#pentagon" id="animate3" />
+        <use xlink:href="#pentagon" id="animate4" />
+    </svg>
+</div>
+
+
+<div>
+    <svg height="100%">
+        <path d="m200 0 L300 173.2 L200 273.2 L100 173.2 Z" />
+    </svg>
+</div>
+	
+</body>
+
+</html>

@@ -26,7 +26,7 @@ let common_food_categary = Vue.component('common-food-categary',{
             	'<div class="food_categary_subtitle">{{cellItem.title}}</div>'+
             	'<div class="food_categary_content">'+
                		'<div class="food_categary_item" v-for="item in cellItem.content">'+
-                    	'<img style="width:30px; height:30px;"></img><br/>'+
+                    	'<img></img><br/>'+
                     	'<span >{{item.title}}</span><span>{{item.weight}}</span><span>两</span>'+
                	 	'</div>'+
             	'</div>'+
@@ -42,9 +42,9 @@ let categary_chart_item = Vue.component('categary-chart-item',{
 	props:[
 		'itemData',
 	],template:'<div class="chart_item">'+
-					'<img style="width:30px; height:30px;"></img>'+
-					'<div class="chart_item_title"></div>'+
-					'<div class="chart_center"></div>'+
+					'<img src="./img/diet.png"></img>'+
+					'<div class="chart_item_title">肉蛋类</div>'+
+					'<div class="chart_item_percent">23.88%</div>'+
 			   '</div>',
 });
 
@@ -67,10 +67,11 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 				'<div class="food_recommend_text">您目前的体重指数<strong>{{11}}</strong>kg/m²，属于<strong>{{222}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{333}}</strong> kcal</div>'+
 				'<div class="chart_background">'+
 					'<chart-item v-for="(item,index) in list" :class="{right_chart_item:index>2}">{{item}}</chart-item>'+
-					// '<div class="chart_left" ></div>'+
+					'<div class="chart_circle">2800</div>'+
 					// '<div class="chart_center"></div>'+
 					// '<div class="chart_right"></div>'+
 				'</div>'+
+				'<div class="chart_background_after" ></div>'+
 			 '</div>',
 });
 
