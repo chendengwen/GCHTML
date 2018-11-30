@@ -270,10 +270,6 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 	margin-top: 10px;
 }
 
-svg text {
-	font-size: 18px;
-	text-anchor:middle;
-}
 
 .categary_list::before {
 	content:"常见食物举例";

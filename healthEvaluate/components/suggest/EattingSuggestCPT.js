@@ -70,17 +70,21 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 					'<div class="chart_circle">'+
 						'<svg height="100%" width="100%">'+
 							'<circle cx="150" cy="70" r="55" fill="rgb(242,242,242)"/>'+
-							'<text x="150" y="70" fill="red" textLength="80">健康评估'+
-								'<tspan x="150" y="90">12cal</tspan>'+
+							'<text x="150" y="70" fill="rgb(51,51,51)" textLength="50" style="font-size:25px; text-anchor:middle;">2800'+
+								'<tspan x="150" y="92" style="font-size:16px;">kcal</tspan>'+
 							'</text>'+
 	    					'<symbol>'+
-	    						'<circle id="circle_path" cx="150" cy="70" r="55" stroke-width="20" stroke-dasharray="62.8 251.2" fill="none"/>'+
+	    						'<circle id="circle_path" cx="150" cy="70" r="55"  stroke-width="20" stroke-dasharray="86.35 259.05" fill="none"/>'+
 							'</symbol>'+
-							'<use xlink:href="#circle_path" id="circle_path1" stroke="#ffb850" stroke-dashoffset="0"/>'+
-							'<use xlink:href="#circle_path" id="circle_path2" stroke="#ff7e5d" stroke-dashoffset="62.8"/>'+
-							'<use xlink:href="#circle_path" id="circle_path3" stroke="#8cd2a4" stroke-dashoffset="125.6"/>'+
-							'<use xlink:href="#circle_path" id="circle_path4" stroke="#ff00fd" stroke-dashoffset="188.4"/>'+
-							'<use xlink:href="#circle_path" id="circle_path5" stroke="#62adea" stroke-dashoffset="251.2"/>'+
+							'<use xlink:href="#circle_path" id="circle_path1" stroke="rgb(32,228,164)" stroke-dashoffset="0"/>'+
+							'<use xlink:href="#circle_path" id="circle_path2" stroke="rgb(149,188,12)" stroke-dashoffset="-12.78"/>'+
+							'<use xlink:href="#circle_path" id="circle_path3" stroke="rgb(220,103,17)" stroke-dashoffset="-25.56"/>'+
+							'<use xlink:href="#circle_path" id="circle_path4" stroke="rgb(230,174,28)" stroke-dashoffset="-70.46"/>'+
+							'<use xlink:href="#circle_path" id="circle_path5" stroke="rgb(200,51,129)" stroke-dashoffset="-90"/>'+
+							// 补偿计算
+							'<use xlink:href="#circle_path" id="circle_path6" stroke="rgb(71,58,140)" stroke-dashoffset="-154"/>'+
+							'<use xlink:href="#circle_path" id="circle_path6" stroke="rgb(71,58,140)" stroke-dashoffset="86.35"/>'+
+							'<use xlink:href="#circle_path" id="circle_path6" stroke="rgb(71,58,140)" stroke-dashoffset="171"/>'+
 						'</svg>'+
 					'</div>'+
 				'</div>'+
