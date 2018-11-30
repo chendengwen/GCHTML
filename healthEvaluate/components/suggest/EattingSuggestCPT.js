@@ -66,7 +66,7 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 	template:'<div>'+
 				'<div class="food_recommend_text">您目前的体重指数<strong>{{11}}</strong>kg/m²，属于<strong>{{222}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{333}}</strong> kcal</div>'+
 				'<div class="chart_background">'+
-					'<chart-item v-for="(item,index) in list" :class="{right_chart_item:index>2}">{{item}}</chart-item>'+
+					'<chart-item v-for="(item,index) in list" v-bind:key="index" :class="{right_chart_item:index>2}">{{item}}</chart-item>'+
 					'<div class="chart_circle">'+
 						'<svg height="100%" width="100%">'+
 							'<circle cx="150" cy="70" r="55" fill="rgb(242,242,242)"/>'+

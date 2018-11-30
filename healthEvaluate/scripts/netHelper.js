@@ -1,8 +1,11 @@
 
 var Config = function(window, undefined) {
-    let baseUrl = "http://yapi.demo.qunar.com/mock/28962/gary/test/";
+    // let baseUrl = "http://yapi.demo.qunar.com/mock/28962/gary/test/";
+    let baseUrl = "http://mobile.hmtest.kmhealthcloud.cn:8165";
 
     this.APIs = {
+        'HealthEvaluateInfo':"/api/HealthEvaluate/GetHealthEvaluateInfo",
+
         'LoginApi': "login",
         'RegisterApi': "register",
         'UserInfoApi': "getUserInfo",
@@ -19,4 +22,5 @@ var Config = function(window, undefined) {
         
         return baseUrl + api + paramStr;
     }
-}
+};
+

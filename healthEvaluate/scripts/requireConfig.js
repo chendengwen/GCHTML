@@ -10,13 +10,21 @@ require.config({
 require(['commonFunc','netHelper','main'],function(commonFunc){
 
     // 网络请求
-var config = new Config();
-var apiStr = config.getUrl(config.APIs.UserInfoApi, { 'phone': '123', 'pwd': '321' })
+let config = new Config();
+let apiStr = config.getUrl(config.APIs.HealthEvaluateInfo) // { 'phone': '123', 'pwd': '321' }
+let headerSet = {headers:{Token:'7f7be180dfde4bb6bdb1084aafdefa5a'}}; // localStorage.token
 
-fetch(apiStr).then(response => {
+// var headers = new Headers();
+// headers.append('Accept', 'application/json'); 
+// headers.append('Token', '7f7be180dfde4bb6bdb1084aafdefa5a'); 
+// var request = new Request(apiStr, {
+//     headers: headers,
+//     method:"GET"
+// });
+fetch(apiStr,headerSet).then(response => {
         return response.json();
     }).then(myjson => {
-        // console.log(myjson);
+        console.log(myjson);
         // 默认设置样式 display: none，加载完成后，在执行 display:block
         document.getElementById('content').style.display = "block";
 
@@ -57,8 +65,13 @@ fetch(apiStr).then(response => {
             }(i,message)
         }
 
+        if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+            window.webkit.messageHandlers.dataLoaded.postMessage();
+        }
+        
     }).catch(e => {
             console.error('error' + e);
+            window.webkit.messageHandlers.dataLoaded.postMessage({code:-1,message:"获取数据失败"});
     })
 
 })
