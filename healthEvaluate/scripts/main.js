@@ -51,9 +51,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     count: 0,
-    food_categary_data:'',	// 饮食建议数据
-
-
+    eattingSuggestion:'',	// 饮食建议数据
     sportSuggestion:'',
     mentalSuggestion:'',
     societySuggestion:'',

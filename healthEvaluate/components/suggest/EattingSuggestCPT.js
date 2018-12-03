@@ -4,7 +4,7 @@
 let eattingChild_noData = Vue.component('eatting-suggest-child-nodata',{
 	template:'<div>'+
 				'<div class="suggetion_content_text" style="padding-top:40px;">' +
-					'&nbsp;&nbsp;为了科学的为您定制饮食计划,您需要完善您的健康档案信息。请完善您的<strong style="color:red;"> 身高、体重、体力活动 </strong>信息'+
+					'&nbsp;&nbsp;为了科学的为您定制饮食计划，您需要完善您的健康档案信息。请完善您的<strong style="color:red;"> 身高、体重、体力活动 </strong>信息'+
 				'</div>'+
 				'<div class="noRecord_background"><div/></div>'+
 				'<div class="suggetion_content_text nodata_text" style="text-align:center;">没有数据哦</div>'+
@@ -17,12 +17,12 @@ let eattingChild_noData = Vue.component('eatting-suggest-child-nodata',{
 */
 let common_food_categary = Vue.component('common-food-categary',{
 	props:[
-		'dataList',
+		'data',
 	],
 	template:
 	'<div>'+
     	'<div class="categary_list">'+
-        	'<div class="categary_cell" v-for="(cellItem,index) in dataList" v-bind:key="index">'+
+        	'<div class="categary_cell" v-for="(cellItem,index) in data" v-bind:key="index">'+
             	'<div class="food_categary_subtitle">{{cellItem.title}}</div>'+
             	'<div class="food_categary_content">'+
                		'<div class="food_categary_item" v-for="item in cellItem.content">'+
@@ -33,7 +33,6 @@ let common_food_categary = Vue.component('common-food-categary',{
         	'</div>'+
     	'</div>'+
     	'<div class="red_tips">*每日食盐摄入量<6g，水1500-1700毫升 &#10;*饮食方案仅适用于正常成年人</div>'+
-    	// '<div class="red_tips">*饮食方案仅适用于正常成年人</div>'+
     '</div>'
 });
 
@@ -53,7 +52,7 @@ let categary_chart_item = Vue.component('categary-chart-item',{
 */
 let recommend_food_chart = Vue.component('recommend-food-chart',{
 	props:[
-		'chartData',
+		'data',
 	],
 	data:function () {
 		return {
@@ -64,9 +63,9 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 		'chartItem':categary_chart_item,
 	},
 	template:'<div>'+
-				'<div class="food_recommend_text">您目前的体重指数<strong>{{11}}</strong>kg/m²，属于<strong>{{222}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{333}}</strong> kcal</div>'+
+				'<div class="food_recommend_text">您目前的体重指数<strong>{{data.BMI}}</strong>kg/m²，属于<strong>{{data.BMIDescription}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{data.DietCalory}}</strong> kcal</div>'+
 				'<div class="chart_background">'+
-					'<chart-item v-for="(item,index) in list" v-bind:key="index" :class="{right_chart_item:index>2}">{{item}}</chart-item>'+
+					'<chart-item v-for="(item,index) in list" v-bind:key="index" :class="{right_chart_item:index>2}" :itemData="item"></chart-item>'+
 					'<div class="chart_circle">'+
 						'<svg height="100%" width="100%">'+
 							'<circle cx="150" cy="70" r="55" fill="rgb(242,242,242)"/>'+
@@ -103,21 +102,20 @@ let eattingChild_withData = Vue.component('eatting-suggest-child-data',{
 		'foodChart':recommend_food_chart,
 	},
 	template:'<div>'+
-				'<food-chart :chartData="data"></food-chart>'+
-				'<categary-list :dataList="data"></categary-list>'+
+				'<food-chart :data="data"></food-chart>'+
+				'<categary-list :data="data"></categary-list>'+
 			'</div>'
 });
 
 
 let eattingCPT = Vue.component('eatting-suggest',{
-	// props:['userName'],
 	components:{ 
 		'nodata':eattingChild_noData,
 		'withdata':eattingChild_withData 
 	},
 	template:'<div>'+
-				'<div v-if="cpt_data_list instanceof Array">'+
-					'<withdata :data="cpt_data_list"></withdata>'+
+				'<div v-if="typeof eattingSuggestion == \'object\' ">'+
+					'<withdata :data="eattingSuggestion"></withdata>'+
 				'</div>'+
 				'<div v-else>'+
 					'<nodata></nodata>'+
@@ -125,8 +123,8 @@ let eattingCPT = Vue.component('eatting-suggest',{
 				'<br>' +
 			'</div>'
 	,computed: {
-		cpt_data_list(){
-			return this.$store.state.food_categary_data;
+		eattingSuggestion(){
+			return this.$store.state.eattingSuggestion;
 		}
 	},
 	// watch: {
