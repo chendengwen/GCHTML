@@ -18,7 +18,7 @@ let eattingChild_noData = Vue.component('eatting-suggest-child-nodata',{
 let common_food_categary = Vue.component('common-food-categary',{
 	props:[
 		'data',
-	],
+	], 
 	template:
 	'<div>'+
     	'<div class="categary_list">'+
@@ -63,7 +63,7 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 		'chartItem':categary_chart_item,
 	},
 	template:'<div>'+
-				'<div class="food_recommend_text">您目前的体重指数<strong>{{data.BMI}}</strong>kg/m²，属于<strong>{{data.BMIDescription}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{data.DietCalory}}</strong> kcal</div>'+
+				'<div class="food_recommend_text">您目前的体重指数：<strong>{{data.BMI}}</strong>kg/m²，属于<strong>{{data.BMIDescription}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{data.DietCalory}}</strong> kcal</div>'+
 				'<div class="chart_background">'+
 					'<chart-item v-for="(item,index) in list" v-bind:key="index" :class="{right_chart_item:index>2}" :itemData="item"></chart-item>'+
 					'<div class="chart_circle">'+
