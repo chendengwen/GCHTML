@@ -88,6 +88,12 @@ body { -webkit-user-select:none;}
 	position: absolute;
 	color: #fff!important;
 	display: inline-block;
+
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.report_radius:active {
+
 }
 
 /*顶部--生理分数*/
@@ -246,10 +252,10 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 }
 
 .chart_item img {
-	width:26px;
-	height:26px;
+	width:28px;
+	height:28px;
 	left: 10px;
-	top: calc((50px - 26px)/2);
+	top: calc((50px - 28px)/2);
 	position: absolute;
 }
 

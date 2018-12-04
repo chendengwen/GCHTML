@@ -26,7 +26,7 @@ let common_food_categary = Vue.component('common-food-categary',{
             	'<div class="food_categary_subtitle">{{cellItem.title}}</div>'+
             	'<div class="food_categary_content">'+
                		'<div class="food_categary_item" v-for="item in cellItem.contents">'+
-                    	'<img v-bind:src="item.image" style="width:32px; height:32px;"></img><br/>'+
+                    	'<img v-bind:src="item.image" style="width:40px; height:40px;"></img><br/>'+
                     	'<span >{{item.subtitle}}</span><span style="color:rgb(0, 141, 253);">{{item.amount}}</span><span>{{item.unit}}</span>'+
                	 	'</div>'+
             	'</div>'+
