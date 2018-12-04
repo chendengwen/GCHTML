@@ -152,40 +152,44 @@ ScoreAlertView.prototype.show = function(index,content){
 ///  一个项高度为26px
 /**
 * 自定义需要添加到 alertView 内的组件
-* @param element 容器
-* @param content 显示的信息内容
+* @param containter 容器
+* @param content 显示的信息内容  [{'desease':'糖尿病','level': level}]
 */
 ScoreAlertView.prototype.physiology = function (containter,content) {
 	var alertTitleElement = containter.parentNode.firstChild;
 	alertTitleElement.innerHTML = "生理" + alertTitleElement.innerHTML;
 
 	// title div容器
-	var titleArr = ["脑卒中","血脂异常"];
 	var titleInnerHtml = '';
-	for(var i = 0; i < titleArr.length; i++){
-		titleInnerHtml += '<div class="item_title">'+ titleArr[i] + '</div>';
+	for(var i = 0; i < content.length; i++){
+		titleInnerHtml += '<div class="item_title">'+ content[i]['desease'] + '</div>';
 	}
 	var titleDiv = '<div class="title_containter">'+ titleInnerHtml + '</div>';
 
 
 	// color div容器
-	var colorArr = ["0.3","0.6"];
 	var subtitleArr = new Array();
 	var colorInnerHtml = '';
-	for(var i = 0; i < colorArr.length; i++) {
-        var value = parseFloat(colorArr[i]);
+	for(var i = 0; i < content.length; i++) {
+        var value = parseFloat(content[i]['level']);
         var color;
         var subtitle;
         var width = 'width:' + value*100 + '%;';
         if (value >= 0.8) {
             color = 'background-color:#f94e93;';
             title = "高风险";
-        } else if (value <= 0.4) {
-            color = 'background-color:#23d25d;'
-            title = "低风险";
-        } else {
+        } else if (value >= 0.5){
         	color = 'background-color:#fba034;';
             title = "中风险";
+        } else if (value < 0.5 && value > 0.2) {
+            color = 'background-color:#23d25d;'
+            title = "低风险";
+        } else if (value == 1.0){
+        	color = 'background-color:#d91f1f;'
+            title = "很高风险";
+        } else {
+        	color = 'background-color:#23d25d;'
+            title = "极低风险";
         }
         subtitleArr.push(title);
 
@@ -200,7 +204,7 @@ ScoreAlertView.prototype.physiology = function (containter,content) {
 
 	// subtitle div容器
 	var subtitleInnerHtml = '';
-	for(var i = 0; i < titleArr.length; i++){
+	for(var i = 0; i < content.length; i++){
 		subtitleInnerHtml += '<div class="item_subtitle">'+ subtitleArr[i] + '</div>';
 	}
 	var subtitleDiv = '<div class="subtitle_containter" style="">'+ subtitleInnerHtml + '</div>';
@@ -211,33 +215,35 @@ ScoreAlertView.prototype.physiology = function (containter,content) {
 
 /**
 * 心理
+* @param containter 容器
+* @param content 显示的信息内容  {listdata:[{'desease':'糖尿病','level': level}], conclusion:'经测评，您目前...'}
 */
 ScoreAlertView.prototype.mental = function (containter,content) {
 	var alertTitleElement = containter.parentNode.firstChild;
 	alertTitleElement.innerHTML = "心理" + alertTitleElement.innerHTML;
 
+	var dataArr = content.listdata;
+
 	// title div容器
-	var titleArr = ["焦虑","抑郁","睡眠","心理躯干化"];
 	var titleInnerHtml = '';
-	for(var i = 0; i < titleArr.length; i++){
-		titleInnerHtml += '<div class="item_title">'+ titleArr[i] + '</div>';
+	for(var i = 0; i < dataArr.length; i++){
+		titleInnerHtml += '<div class="item_title">'+ dataArr[i]['desease'] + '</div>';
 	}
 	var titleDiv = '<div class="title_containter">'+ titleInnerHtml + '</div>';
 
 
 	// color div容器
-	var colorArr = ["1","0.6","0.5","0.2"];
 	var subtitleArr = new Array();
 	var colorInnerHtml = '';
-	for(var i = 0; i < colorArr.length; i++) {
-        var value = parseFloat(colorArr[i]);
+	for(var i = 0; i < dataArr.length; i++) {
+        var value = parseFloat(dataArr[i]['level']);
         var color;
         var subtitle;
         var width = 'width:' + value*100 + '%;';
         if (value >= 0.8) {
             color = 'background-color:#f94e93;';
             title = "优";
-        } else if (value <= 0.4) {
+        } else if (value >= 0.4 && value < 0.8) {
             color = 'background-color:#23d25d;'
             title = "中";
         } else {
@@ -257,17 +263,17 @@ ScoreAlertView.prototype.mental = function (containter,content) {
 
 	// subtitle div容器
 	var subtitleInnerHtml = '';
-	for(var i = 0; i < titleArr.length; i++){
+	for(var i = 0; i < dataArr.length; i++){
 		subtitleInnerHtml += '<div class="item_subtitle">'+ subtitleArr[i] + '</div>';
 	}
 	var subtitleDiv = '<div class="subtitle_containter" style="">'+ subtitleInnerHtml + '</div>';
 
 
-	// 总体结论 // conclusion_title
+	// 总体结论
 	var conclusionInnerHtml = '<div class="conclusion_containter">'+ 
 								'<div class="conclusion_title" style="height=20px; text-align:left;">总体结论</div>'+
-							  	'<div class="alert_line" style=""></div>'+ // margin:0px -12px;
-							  	'<div class="conclusion_title">经评测,您目前的整体心理健康状况较好,能够以积极健康的心态和情绪来面对生活,请继续保持.</div>'+
+							  	'<div class="alert_line" style=""></div>'+ 
+							  	'<div class="conclusion_title">'+ content.conclusion +'</div>'+
 							  '</div>';
 
 	containter.innerHTML = titleDiv + colorDiv + subtitleDiv + conclusionInnerHtml;

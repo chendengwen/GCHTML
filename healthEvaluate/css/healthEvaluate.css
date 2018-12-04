@@ -54,17 +54,16 @@ body { -webkit-user-select:none;}
 	padding-top: 10px;
 	padding-bottom: 5px;
 }
-#head_span_01 {
-	color: #333; 
+
+.head_title_text {
+	color: rgb(51, 51, 51); 
 	font-size:14px;
 	padding-left: 15px;
 	padding-right: 10px;
 }
-#head_span_02 {
-	color: red; font-size: 14px;
-}
-#head_span_03 {
-	color: red; font-size: 17px;
+
+.head_content_text {
+	color: red; font-size: 16px;
 }
 
 #score_details {
@@ -116,6 +115,11 @@ body { -webkit-user-select:none;}
 .report_radius_span {
 	height: 50px;
 	line-height: 70px;
+}
+
+.report_radius span {
+	/*font-weight: bold;*/
+	font-size: 20px;
 }
 
 #score_comment {
@@ -284,7 +288,7 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 	font-size: 14px;
 	font-weight: bold;
 	color: black;
-	border: 0.5px rgba(200, 200, 200,0.6) solid;
+	border: 1px rgb(242,242,242) solid;
 	height: 32px;
 	line-height: 32px;
 }
@@ -304,6 +308,16 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 	line-height: 20px;
 	padding-top: 10px;
 	padding-bottom: 6px;
+}
+
+.red_tips {
+	color: #d91f1f;
+	font-size: 14px;
+	line-height: 20px;
+	padding:8px 10px;
+	border: 1px solid rgb(242,242,242);
+	border-width:1px 0;
+	white-space:pre-wrap;
 }
 
 
@@ -369,12 +383,3 @@ div#suggetion ul li a.seleted_li_a, div#suggetion ul li a:active  {
 	color:rgb(0, 141, 253);
 }
 
-.red_tips {
-	color: #d91f1f;
-	font-size: 14px;
-	line-height: 20px;
-	padding-left: 10px;
-	padding-top: 8px;
-	border-top: 0.5px rgba(200, 200, 200,0.6) solid;
-	white-space:pre-wrap;
-}

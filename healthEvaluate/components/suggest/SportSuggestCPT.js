@@ -18,11 +18,6 @@ let sportChild_noData = Vue.component('sport-suggest-child-nodata',
 let sportChild_withData = Vue.component('sport-suggest-child-data',
 {
 	props:['suggestion'],
-	data:function  () {
-		return {
-			dayArray:["周一","周二","周三","周四","周五","周六","周日"]
-		} 
-	},
 	template:'<div>'+
 				'<div style="padding-top:30px;"></div>'+
 				'<div class="sport_plan_header">'+
@@ -44,7 +39,7 @@ let sportChild_withData = Vue.component('sport-suggest-child-data',
 				 '<div class="sport_title_text" style="height:32px; position:relative;"><div style="position:absolute; height:14px; padding-left:10px; top:8px;">运动流程</div></div>'+
 				 '<div style="background-color: rgb(242,242,242); height: 1px;"></div>'+
 				 '<div class="sport_content_text" style="margin:15px 10px; line-height:20px; white-space:pre-wrap;">'+
-				 	'&nbsp;&nbsp;（1）准备活动：进行5分钟左右速度稍慢的快走，并活动全身关节。 '+
+				 	'&nbsp;&nbsp;（1）准备活动：进行5分钟左右速度稍慢的快走，并活动全身关节 '+
 				 	'&#10;&nbsp;&nbsp;（2）主体部分：按照运动计划进行{{suggestion.SportContent}} '+
 				 	'&#10;&nbsp;&nbsp;（3）整体活动：'+
 				 	'&#10; &emsp; &emsp;1）慢走3分钟（预防突然停止运动所导致的头晕、休克）'+
