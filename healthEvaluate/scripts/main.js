@@ -56,11 +56,6 @@ const store = new Vuex.Store({
     sportSuggestion:'',
     mentalSuggestion:'',
     societySuggestion:'',
-
-    // 风险因子
-    physiologyDeseaseFactor:'',
-    mentalDeseaseFactor:'',
-    societyDeseaseFactor:'',
   },
   mutations: {
     increment (state) {

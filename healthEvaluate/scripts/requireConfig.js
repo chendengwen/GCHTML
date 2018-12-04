@@ -38,6 +38,16 @@ fetch(apiStr,headerSet).then(response => {
         state.mentalSuggestion = jsonData.ReturnData.PsychologyResult.BehaviorSuggestion;
         state.societySuggestion = jsonData.ReturnData.SocialResult.BehaviorSuggestion;
 
+        // 分数
+        document.getElementById('head_span_score').innerHTML = jsonData.ReturnData.PersonDeseaseCategory.HealthScore;
+        document.getElementById('head_span_grade').innerHTML = jsonData.ReturnData.PersonDeseaseCategory.HealthGrade;
+        document.getElementById('report_radius_span_1').innerHTML = jsonData.ReturnData.PersonDeseaseCategory.PhysiologicalHealth;
+        document.getElementById('report_radius_span_2').innerHTML = jsonData.ReturnData.PsychologyResult.Score;
+        document.getElementById('report_radius_span_3').innerHTML = jsonData.ReturnData.SocialResult.Score;
+        let time = jsonData.ReturnData.PersonDeseaseCategory.ModifiedTime.split('T')[0];
+        document.getElementById('middle_span_comment').innerHTML = 
+        '注: 您本次评估的健康档案信息完整度为' + jsonData.ReturnData.DataIntegrity + '%,评估时间为' + time + '。信息越完整,评估越精准! 建议完善信息后再次评估';
+
         // 风险因子  var colorArr = ["0.3","0.6"];
         /* 疾病 
         [
@@ -72,7 +82,6 @@ fetch(apiStr,headerSet).then(response => {
                         };
             physiologyDeseaseFactors.push(factor);
         }
-        state.physiologyDeseaseFactor = physiologyDeseaseFactors;
 
         /* 心理 
             level: {1:低风险,2:中等风险,3:高风险}
@@ -86,7 +95,6 @@ fetch(apiStr,headerSet).then(response => {
                                                     { 'desease': '心理躯体化', 'level': 1.0 }
                                                   ]
                                     };
-        state.mentalDeseaseFactor = mentalDeseaseFactors;
 
         /* 心理 
             level: {1:低风险,2:中等风险,3:高风险}
@@ -99,21 +107,9 @@ fetch(apiStr,headerSet).then(response => {
                                                     { 'desease': '社会支持', 'level': 1.0 }
                                                   ]
                                     };
-        state.societyDeseaseFactor = societyDeseaseFactors;
-
-        // 分数
-        document.getElementById('head_span_score').innerHTML = jsonData.ReturnData.PersonDeseaseCategory.HealthScore;
-        document.getElementById('head_span_grade').innerHTML = jsonData.ReturnData.PersonDeseaseCategory.HealthGrade;
-        document.getElementById('report_radius_span_1').innerHTML = jsonData.ReturnData.PersonDeseaseCategory.PhysiologicalHealth;
-        document.getElementById('report_radius_span_2').innerHTML = jsonData.ReturnData.PsychologyResult.Score;
-        document.getElementById('report_radius_span_3').innerHTML = jsonData.ReturnData.SocialResult.Score;
-        let time = jsonData.ReturnData.PersonDeseaseCategory.ModifiedTime.split('T')[0];
-        document.getElementById('middle_span_comment').innerHTML = 
-        '注: 您本次评估的健康档案信息完整度为' + jsonData.ReturnData.DataIntegrity + '%,评估时间为' + time + '。信息越完整,评估越精准! 建议完善信息后再次评估';
-
 
         //配置点击事件
-        var messageList = [state.physiologyDeseaseFactor,state.mentalDeseaseFactor,state.societyDeseaseFactor];
+        var messageList = [physiologyDeseaseFactors,mentalDeseaseFactors,societyDeseaseFactors];
         for (var i = 1; i <= 3; i++) {
             var button = document.getElementById('report_radius_' + i);
             button.onclick = function(index,message) {
@@ -123,6 +119,7 @@ fetch(apiStr,headerSet).then(response => {
             }(i,messageList[i-1])
         }
 
+        // 通知手机数据加载完
         if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
             window.webkit.messageHandlers.dataLoaded.postMessage({code:0,message:"获取数据成功"});
         }
