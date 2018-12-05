@@ -247,7 +247,7 @@ ScoreAlertView.prototype.mental = function (containter,content) {
             color = 'background-color:#23d25d;'
             title = "中";
         } else {
-        	color = 'background-color:#fba034;';
+        	color = 'background-color:#23d25d;'; // rgb(35, 210, 93)
             title = "差";
         }
         subtitleArr.push(title);

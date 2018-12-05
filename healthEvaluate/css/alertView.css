@@ -35,8 +35,8 @@ div.alert_view {
 	background:#fff;
 	top:50%;
 	left:50%;
-	-webkit-transform:translate(-50%,-65%);
-	transform:translate(-50%,-65%);
+	-webkit-transform:translate(-50%,-90%);
+	transform:translate(-50%,-90%);
 	border-radius:8px;
 }
 

@@ -12,12 +12,12 @@ require(['commonFunc','netHelper','main'],function(commonFunc){
     // 网络请求
 let config = new Config();
 let apiStr = config.getUrl(config.APIs.HealthEvaluateInfo) 
-let headerSet = {headers:{Token:'2b06d4135c6e46dca83fd9a7ec3d49b7'}}; // localStorage.token
+let headerSet = {headers:{Token:'d13b50b4633b44b491a4dae6295db9cf'}}; // localStorage.token
 
 /* 通过 request 对象发送请求
 var headers = new Headers();
 headers.append('Accept', 'application/json'); 
-headers.append('Token', '2b06d4135c6e46dca83fd9a7ec3d49b7'); 
+headers.append('Token', 'd13b50b4633b44b491a4dae6295db9cf'); 
 var request = new Request(apiStr, {
     headers: headers,
     method:"GET"
@@ -84,27 +84,40 @@ fetch(apiStr,headerSet).then(response => {
         }
 
         /* 心理 
-            level: {1:低风险,2:中等风险,3:高风险}
+            level: {1:低,2:中,3:优}
         */
+        function getLevel (result) {
+            switch(result) {
+                case 1:
+                    return 0.2;
+                case 2:
+                    return 0.5;
+                case 3:
+                    return 1.0;
+                default: return 0.2;
+            }
+        }
+        var psychologyResult = jsonData.ReturnData.PsychologyResult;
         var mentalDeseaseFactors = {
-                                        conclusion: jsonData.ReturnData.PsychologyResult.GeneralConclusion,
+                                        conclusion: psychologyResult.GeneralConclusion,
                                         listdata: [
-                                                    { 'desease': '焦虑', 'level': 0.4 }, // jsonData.ReturnData.PsychologyResult.Item1
-                                                    { 'desease': '抑郁', 'level': 0.2 },
-                                                    { 'desease': '睡眠', 'level': 0.8 },
-                                                    { 'desease': '心理躯体化', 'level': 1.0 }
+                                                    { 'desease': '焦虑', 'level': getLevel(psychologyResult.Item1) },
+                                                    { 'desease': '抑郁', 'level': getLevel(psychologyResult.Item2) },
+                                                    { 'desease': '睡眠', 'level': getLevel(psychologyResult.Item3) },
+                                                    { 'desease': '心理躯体化', 'level': getLevel(psychologyResult.Item4) }
                                                   ]
                                     };
 
-        /* 心理 
-            level: {1:低风险,2:中等风险,3:高风险}
+        /* 社会
+            level: {1:差,2:中,3:优}
         */
+        var socialResult = jsonData.ReturnData.SocialResult;
         var societyDeseaseFactors = {
-                                        conclusion: jsonData.ReturnData.SocialResult.GeneralConclusion,
+                                        conclusion: socialResult.GeneralConclusion,
                                         listdata: [
-                                                    { 'desease': '社会适应', 'level': 0.3 }, // jsonData.ReturnData.SocialResult.Item1
-                                                    { 'desease': '社会接触', 'level': 0.4 },
-                                                    { 'desease': '社会支持', 'level': 1.0 }
+                                                    { 'desease': '社会适应', 'level': getLevel(socialResult.Item1) }, 
+                                                    { 'desease': '社会接触', 'level': getLevel(socialResult.Item2) },
+                                                    { 'desease': '社会支持', 'level': getLevel(socialResult.Item3) }
                                                   ]
                                     };
 
@@ -126,7 +139,9 @@ fetch(apiStr,headerSet).then(response => {
         
     }).catch(e => {
             console.error('error' + e);
-            window.webkit.messageHandlers.dataLoaded.postMessage({code:-1,message:"获取数据失败"});
+            if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                window.webkit.messageHandlers.dataLoaded.postMessage({code:-1,message:"获取数据失败"});
+            }
     })
 
 })

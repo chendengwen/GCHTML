@@ -148,13 +148,13 @@ let eattingCPT = Vue.component('eatting-suggest',{
 		'withdata':eattingChild_withData 
 	},
 	template:'<div>'+
-				'<div v-if="typeof dietSuggestion == \'object\' ">'+
+				'<div v-if="typeof dietSuggestion == \'object\'  &&  dietSuggestionDetail != null">'+
 					'<withdata :suggestionData="dietSuggestion" :suggestionDetailData="dietSuggestionDetail"></withdata>'+
 				'</div>'+
 				'<div v-else>'+
 					'<nodata></nodata>'+
 				'</div>'+
-				'<br>' +
+				'<br>' + 
 			'</div>'
 	,
 	computed: {
@@ -162,6 +162,7 @@ let eattingCPT = Vue.component('eatting-suggest',{
 			return this.$store.state.dietSuggestion;
 		},
 		dietSuggestionDetail(){
+			console.log('typeof dietSuggestionDetail ===' + typeof this.$store.state.dietSuggestionDetail + '  value ==' + this.$store.state.dietSuggestionDetail);
 			return this.$store.state.dietSuggestionDetail;
 		}
 	},

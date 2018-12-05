@@ -77,8 +77,8 @@ let sportCPT = Vue.component('sport-suggest',{
 		'withdata':sportChild_withData 
 	},
 	template:'<div>'+
-				'<div v-if="sportSuggestion instanceof Array">'+
-					'<nodata :suggestion="sportSuggestion"></nodata>' +
+				'<div v-if="sportSuggestion.EvaluateErrorList instanceof Array">'+
+					'<nodata :suggestion="sportSuggestion.EvaluateErrorList"></nodata>' +
 			 	'</div>' +
 			 	'<div v-else-if="typeof sportSuggestion == \'object\' ">'+
 					'<withdata :suggestion="sportSuggestion"></withdata>'+
