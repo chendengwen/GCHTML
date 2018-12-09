@@ -51,7 +51,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     count: 0,
-    eattingSuggestion:'',	// 饮食建议数据
+    dietSuggestion:'',	// 饮食建议百分比图表数据
+    dietSuggestionDetail:'', // 饮食建议详细列表数据
     sportSuggestion:'',
     mentalSuggestion:'',
     societySuggestion:'',

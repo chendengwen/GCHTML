@@ -22,18 +22,43 @@ let common_food_categary = Vue.component('common-food-categary',{
 	template:
 	'<div>'+
     	'<div class="categary_list">'+
-        	'<div class="categary_cell" v-for="(cellItem,index) in data" v-bind:key="index">'+
+        	'<div class="categary_cell" v-for="(cellItem,index) in foodCategarylist" v-bind:key="index">'+
             	'<div class="food_categary_subtitle">{{cellItem.title}}</div>'+
             	'<div class="food_categary_content">'+
-               		'<div class="food_categary_item" v-for="item in cellItem.content">'+
-                    	'<img></img><br/>'+
-                    	'<span >{{item.title}}</span><span>{{item.weight}}</span><span>两</span>'+
+               		'<div class="food_categary_item" v-for="item in cellItem.contents">'+
+                    	'<img v-bind:src="item.image" style="width:40px; height:40px;"></img><br/>'+
+                    	'<span >{{item.subtitle}}</span><span style="color:rgb(0, 141, 253);">{{item.amount}}</span><span>{{item.unit}}</span>'+
                	 	'</div>'+
             	'</div>'+
         	'</div>'+
     	'</div>'+
     	'<div class="red_tips">*每日食盐摄入量<6g，水1500-1700毫升 &#10;*饮食方案仅适用于正常成年人</div>'+
     '</div>'
+    ,computed:{
+    	foodCategarylist(){
+ 			let tempArr = [];
+ 			let titleArr = [
+ 								{title:"谷薯类",contents:[{subtitle:"大米",key:"Rice",unit:"两",amount:"0",image:"img/rice1.png"}, {subtitle:"馒头",key:"SteamedBun",unit:"两",amount:"0",image:"img/rice2.png"},{subtitle:"红薯",key:"Potato",unit:"两",amount:"0",image:"img/rice3.png"}]},
+ 								{title:"肉蛋类",contents:[{subtitle:"牛肉",key:"Meat",unit:"两",amount:"0",image:"img/meat1.png"}, {subtitle:"鸡蛋",key:"Egg",unit:"个",amount:"0",image:"img/meat2.png"}, {subtitle:"鱼",key:"Fish",unit:"两",amount:"0",image:"img/meat3.png"}]},
+ 								{title:"豆奶类",contents:[{subtitle:"牛奶",key:"Milk",unit:"ml",amount:"0",image:"img/milk1.png"}, {subtitle:"南方豆腐",key:"Tofu",unit:"两",amount:"0",image:"img/milk2.png"}, {subtitle:"豆腐干",key:"DriedTofu",unit:"两",amount:"0",image:"img/milk3.png"}]},
+ 								{title:"蔬菜类",contents:[{subtitle:"番茄",key:"ChineseCabbage",unit:"两",amount:"0",image:"img/vegetables1.png"}, {subtitle:"南瓜",key:"Pumpkin",unit:"两",amount:"0",image:"img/vegetables2.png"}, {subtitle:"胡萝卜",key:"Carrot",unit:"两",amount:"0",image:"img/vegetables3.png"}]},
+ 								{title:"水果类",contents:[{subtitle:"苹果",key:"Apple",unit:"两",amount:"0",image:"img/fruits1.png"}, {subtitle:"香蕉",key:"Banana",unit:"两",amount:"0",image:"img/fruits2.png"}, {subtitle:"西瓜",key:"Watermelon",unit:"两",amount:"0",image:"img/fruits3.png"}]},
+ 								{title:"油脂类",contents:[{subtitle:"各种动植物油",key:"Oil",unit:"汤匙(10g每汤匙)",amount:"0",image:"img/grease.png"}]}
+ 							];
+
+ 			for (var i = 0; i < titleArr.length; i++) {
+ 				let item = titleArr[i];
+ 				let contents = item.contents;
+ 				
+ 				for(var j = 0; j < contents.length; j++){
+ 					let keyString = contents[j].key;
+ 					contents[j].amount = this.data[keyString];
+ 				}
+ 			}
+
+ 			return titleArr;
+    	}
+    }
 });
 
 
@@ -41,9 +66,9 @@ let categary_chart_item = Vue.component('categary-chart-item',{
 	props:[
 		'itemData',
 	],template:'<div class="chart_item">'+
-					'<img src="./img/diet.png"></img>'+
-					'<div class="chart_item_title">肉蛋类</div>'+
-					'<div class="chart_item_percent">23.88%</div>'+
+					'<img v-bind:src="itemData.image"></img>'+
+					'<div class="chart_item_title">{{itemData.title}}</div>'+
+					'<div class="chart_item_percent">{{itemData.percent + \'%\'}}</div>'+
 			   '</div>',
 });
 
@@ -54,9 +79,17 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 	props:[
 		'data',
 	],
-	data:function () {
-		return {
-			 list:['11','22','33','44','55','66'],
+	computed:{
+		percentList(){
+
+			return [
+						{title:"谷薯类",percent:this.data.Potato,image:"img/diet.png"},
+						{title:"肉蛋类",percent:this.data.MeatEgg,image:"img/diet1.png"},
+						{title:"豆奶类",percent:this.data.SoyMilk,image:"img/diet2.png"},
+						{title:"蔬菜类",percent:this.data.Vegetables,image:"img/diet3.png"},
+						{title:"水果类",percent:this.data.Fruits,image:"img/diet4.png"},
+						{title:"油脂类",percent:this.data.Fats,image:"img/diet5.png"}
+					];
 		}
 	},
 	components:{
@@ -65,7 +98,7 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 	template:'<div>'+
 				'<div class="food_recommend_text">您目前的体重指数：<strong>{{data.BMI}}</strong>kg/m²，属于<strong>{{data.BMIDescription}}</strong>。&#10;为您推荐每日饮食热量供给量： <strong>{{data.DietCalory}}</strong> kcal</div>'+
 				'<div class="chart_background">'+
-					'<chart-item v-for="(item,index) in list" v-bind:key="index" :class="{right_chart_item:index>2}" :itemData="item"></chart-item>'+
+					'<chart-item v-for="(item,index) in percentList" v-bind:key="index" :class="{right_chart_item:index>2}" :itemData="item"></chart-item>'+
 					'<div class="chart_circle">'+
 						'<svg height="100%" width="100%">'+
 							'<circle cx="150" cy="70" r="55" fill="rgb(242,242,242)"/>'+
@@ -90,20 +123,21 @@ let recommend_food_chart = Vue.component('recommend-food-chart',{
 	
 				'<div class="chart_background_after" ></div>'+
 			 '</div>',
-});
+}); 
 
 
 let eattingChild_withData = Vue.component('eatting-suggest-child-data',{
 	props:[
-		'data',
+		'suggestionData',
+		'suggestionDetailData',
 	],
 	components:{ 
 		'categaryList':common_food_categary,
 		'foodChart':recommend_food_chart,
 	},
 	template:'<div>'+
-				'<food-chart :data="data"></food-chart>'+
-				'<categary-list :data="data"></categary-list>'+
+				'<food-chart :data="suggestionData"></food-chart>'+
+				'<categary-list :data="suggestionDetailData"></categary-list>'+
 			'</div>'
 });
 
@@ -114,19 +148,25 @@ let eattingCPT = Vue.component('eatting-suggest',{
 		'withdata':eattingChild_withData 
 	},
 	template:'<div>'+
-				'<div v-if="typeof eattingSuggestion == \'object\' ">'+
-					'<withdata :data="eattingSuggestion"></withdata>'+
+				'<div v-if="typeof dietSuggestion == \'object\'  &&  dietSuggestionDetail != null">'+
+					'<withdata :suggestionData="dietSuggestion" :suggestionDetailData="dietSuggestionDetail"></withdata>'+
 				'</div>'+
 				'<div v-else>'+
 					'<nodata></nodata>'+
 				'</div>'+
-				'<br>' +
+				'<br>' + 
 			'</div>'
-	,computed: {
-		eattingSuggestion(){
-			return this.$store.state.eattingSuggestion;
+	,
+	computed: {
+		dietSuggestion(){
+			return this.$store.state.dietSuggestion;
+		},
+		dietSuggestionDetail(){
+			console.log('typeof dietSuggestionDetail ===' + typeof this.$store.state.dietSuggestionDetail + '  value ==' + this.$store.state.dietSuggestionDetail);
+			return this.$store.state.dietSuggestionDetail;
 		}
 	},
+	
 	// watch: {
 	// 	cpt_data_list: function(a, b) {
 	// 		console.log("修改前为：" + a);
