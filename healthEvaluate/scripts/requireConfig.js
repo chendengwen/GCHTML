@@ -12,7 +12,7 @@ require(['commonFunc','netHelper','main'],function(commonFunc){
     // 网络请求
 let config = new Config();
 let apiStr = config.getUrl(config.APIs.HealthEvaluateInfo) 
-let headerSet = {headers:{Token:'d13b50b4633b44b491a4dae6295db9cf'}}; // localStorage.token
+let headerSet = {headers:{Token:'7041e6f21b5d4f2fbfa28f733611b767'}}; // localStorage.token
 
 /* 通过 request 对象发送请求
 var headers = new Headers();
