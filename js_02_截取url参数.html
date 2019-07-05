@@ -1,0 +1,30 @@
+<script type="text/javascript">
+	
+	function getQueryString(name) {
+	    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+		/**
+		window的location对象 search 得到的是url中query部分
+		substr() 返回一个从指定位置开始的指定长度的子字符串 这里设置为1,是为了把url中的?号去掉
+		*/
+	    var r = window.location.search.substr(1).match(reg);
+		if (r != null) {
+	        return unescape(r[2]);
+	    }
+	    return null;
+
+		/**
+		split() 将一个字符串分割为子字符串，然后将结果作为字符串数组返回
+		这里就是把query部分以&为分割符
+		*/
+		// var r = window.location.search.substr(1).split("&");
+	    
+	}
+
+	localStorage.pictureUploadedJSON = getQueryString('data');
+
+	document.write(localStorage.pictureUploadedJSON);
+
+</script>
+
+
+<!-- <a href="js截取url参数.htm?topic=1&id=2">测试</a> -->
