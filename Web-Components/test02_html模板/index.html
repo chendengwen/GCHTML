@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Web Component 练习2</title>
+
+    <!-- import引入(<head>中引入文件，<script>中加载内容) -->
+    <!-- href链接引入的html文件，id可以看做页面引导，在script中用到 -->
+    <link rel="import" href="component.html">
+
+    <script>
+      function supportsImports() {
+        return 'import' in document.createElement('link');
+      }
+
+      if (supportsImports()) {
+        // 支持导入!
+      } else {
+        // 使用其他的库来加载文件。
+        console.error('not supports Imports')
+      }
+    </script>
+  </head>
+
+  <body>
+    <component-tag-name></component-tag-name>
+  </body>
+</html>
