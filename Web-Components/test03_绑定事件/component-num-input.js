@@ -11,6 +11,7 @@ class NumInput extends HTMLElement {
         .num-input-content {margin: 10px 0;}
         .num-input {text-align: center;}
       `;
+      console.log(this.dataset)
       shadowRoot.innerHTML = `
         <style>${styles}</style>
         <div class="num-input-content">

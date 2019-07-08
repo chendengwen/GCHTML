@@ -1,4 +1,4 @@
-<template>
+<template id="test">
     <style></style>
     <div>DOM 节点</div>
 </template>
@@ -7,6 +7,8 @@
     // 通过 `document.currentScript.ownerDocument` 来拿到模版自身的跟节点
     const componentDocument = document.currentScript.ownerDocument;
 
+    // var template = document.getElementById("test");
+
     class Component extends HTMLElement {
 
         static get TAG_NAME() {
@@ -14,11 +16,11 @@
         };
 
         constructor() {
-        super();
-        // 使用 Shadow DOM 可以做到组件内的样式和组件外的样式不互相干扰，可以让组件封装更彻底
-        const shadow = this.attachShadow({ mode: 'closed' });
-        const content = componentDocument.querySelector('template').content.cloneNode(true);
-        shadow.appendChild(content);
+            super();
+            // 使用 Shadow DOM 可以做到组件内的样式和组件外的样式不互相干扰，可以让组件封装更彻底
+            const shadow = this.attachShadow({ mode: 'closed' });
+            const content = componentDocument.querySelector('template').content.cloneNode(true);
+            shadow.appendChild(content);
         }
     }
 
