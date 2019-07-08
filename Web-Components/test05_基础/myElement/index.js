@@ -16,7 +16,7 @@ class MyElement extends HTMLElement {
     const showRoot = this.attachShadow({mode: 'open'});
     const container = document.createElement('span');
     const text = this.getAttribute('text');
-    container.innerHTML = text;
+    container.innerHTML = text+' 做一些处理';
     showRoot.appendChild(container);
   }
 }

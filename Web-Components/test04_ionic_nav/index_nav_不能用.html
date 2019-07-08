@@ -14,11 +14,26 @@
 </head>
 <body>
   <ion-app>
-    <ion-nav root="nav-home"></ion-nav>
+    <ion-nav>
+      <nav-home></nav-home>
+    </ion-nav>
   </ion-app>
 
+  <!-- <script src="list-component.js"></script> -->
   <script>
-    techs = [
+    function supportsImports() {
+        return 'import' in document.createElement('link');
+      }
+
+      if (supportsImports()) {
+        // 支持导入!
+        console.log(' supports Imports')
+      } else {
+        // 使用其他的库来加载文件。
+        console.error('not supports Imports')
+      }
+
+    let techs = [
       {
         'title': 'Angular',
         'icon': 'angular',
@@ -74,6 +89,7 @@
         'color': '#000'
       },
     ];
+
     customElements.define('nav-home', class NavHome extends HTMLElement {
       connectedCallback() {
         this.innerHTML = `
@@ -97,8 +113,8 @@
         `;
       }
     });
+    
     const nav = document.querySelector('ion-nav');
-    console.log(nav)
     
     function showDetail(title) {
       const tech = techs.find(tech => tech.title === title);
@@ -122,6 +138,7 @@
         `;
       }
     });
+    
   </script>
 </body>
 </html>
